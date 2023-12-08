@@ -9,8 +9,7 @@ struct Token
 };
 
 // tokenizer`s output used to be vector<Token> tokens
-// string 会截断 空格
-// input : (add 2 (subtract 4 2))
+// input : (add 2 (subtract (add 3 2) 2))
 std::vector<Token> Tokenizer(std::string input)
 {
     std::vector<Token> tokens;
