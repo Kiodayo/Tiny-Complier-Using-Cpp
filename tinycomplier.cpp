@@ -2,11 +2,22 @@
 #include <string>
 #include <vector>
 
+/*                  LISP                      C
+ *   2 + 2          (add 2 2)                 add(2, 2)
+ *   4 - 2          (subtract 4 2)            subtract(4, 2)
+ *   2 + (4 - 2)    (add 2 (subtract 4 2))    add(2, subtract(4, 2))
+*/
+
+
+
 struct Token
 {
     std::string type;
     std::string value;
 };
+
+
+
 
 // tokenizer`s output used to be vector<Token> tokens
 // input : (add 2 (subtract (add 3 2) 2))
