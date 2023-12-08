@@ -227,61 +227,6 @@ void printAST(ASTNode root)
     }
 }
 
-// Vistor
-// 定义一系列接口,在vistor实现
-class NumberLiteral
-{
-public:
-    void enter(ASTNode node, ASTNode parent);
-    void exit(ASTNode node, ASTNode parent);
-};
-
-class StringLiteral
-{
-public:
-    void enter(ASTNode node, ASTNode parent);
-    void exit(ASTNode node, ASTNode parent);
-};
-class CallExpression
-{
-public:
-    void enter(ASTNode node, ASTNode parent);
-    void exit(ASTNode node, ASTNode parent);
-};
-
-class Program
-{
-public:
-    void enter(ASTNode node, ASTNode parent);
-    void exit(ASTNode node, ASTNode parent);
-};
-
-// Signelton Vistor
-class Vistor
-{
-public:
-    Program Program;
-    NumberLiteral NumberLiteral;
-    StringLiteral StringLiteral;
-    CallExpression CallExpression;
-};
-
-Vistor vistor;
-
-struct newASTNode
-{
-    std::string type;
-    struct expression
-    {
-    };
-};
-
-// newAST
-struct newAST
-{
-    std::string type = "Program";
-    std::vector<ASTNode> body;
-};
 
 // DFS 遍历AST ,形成newAST
 void DfsAST(ASTNode *root, std::string &output)
@@ -309,7 +254,7 @@ void DfsAST(ASTNode *root, std::string &output)
         output.append(root->value);
     }
 
-    // 对应表达式的参数表params，params大小为n，对前n-1 个参数中间添加逗号，最后一个不添加逗号
+    // 对应表达式的参数表params，params大小为n，对前n-1 个参数的后面添加逗号，最后一个不添加逗号
     // 这里想了最久，有太多方法可以使用了，这里就用了最简单直接的方法
     for (int i = 0; i < root->params.size(); ++i)
     {
